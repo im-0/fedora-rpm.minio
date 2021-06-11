@@ -1,0 +1,1 @@
+# Minio RPM for Fedora

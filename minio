@@ -1,0 +1,10 @@
+# MinIO admin credentials:
+MINIO_ROOT_USER="minioadmin"
+MINIO_ROOT_PASSWORD="minioadmin"
+
+# Command line options for MinIO server:
+SERVICE_OPTS="
+    --address 127.0.0.1:9000
+    --certs-dir /etc/minio/certs
+    /var/lib/minio
+"

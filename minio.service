@@ -1,0 +1,19 @@
+[Unit]
+Description=MinIO High Performance Object Storage
+After=network-online.target remote-fs.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/sysconfig/minio
+
+Type=simple
+User=minio
+Group=minio
+
+LimitNOFILE=1024000
+
+ExecStart=/usr/bin/minio server $SERVICE_OPTS
+
+
+[Install]
+WantedBy=multi-user.target

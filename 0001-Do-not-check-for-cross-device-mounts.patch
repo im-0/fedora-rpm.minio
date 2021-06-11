@@ -1,0 +1,33 @@
+From 32a8671f0cad7adde103c83d888ac80add04581d Mon Sep 17 00:00:00 2001
+From: Ivan Mironov <mironov.ivan@gmail.com>
+Date: Sat, 12 Jun 2021 12:56:22 +0500
+Subject: [PATCH] Do not check for cross device mounts
+
+---
+ internal/mountinfo/mountinfo_linux.go | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/internal/mountinfo/mountinfo_linux.go b/internal/mountinfo/mountinfo_linux.go
+index 803f6b074afb..fd3b1a415fda 100644
+--- a/internal/mountinfo/mountinfo_linux.go
++++ b/internal/mountinfo/mountinfo_linux.go
+@@ -71,15 +71,10 @@ func CheckCrossDevice(absPaths []string) error {
+ 
+ // Check cross device is an internal function.
+ func checkCrossDevice(absPaths []string, mountsPath string) error {
+-	mounts, err := readProcMounts(mountsPath)
++	_, err := readProcMounts(mountsPath)
+ 	if err != nil {
+ 		return err
+ 	}
+-	for _, path := range absPaths {
+-		if err := mounts.checkCrossMounts(path); err != nil {
+-			return err
+-		}
+-	}
+ 	return nil
+ }
+ 
+-- 
+2.31.1
+

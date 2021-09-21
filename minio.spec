@@ -1,5 +1,8 @@
-%global orig_version_date 2021-06-09
-%global orig_version_time 18-51-39
+# TODO: Enable debuginfo (disabled for f35).
+%global debug_package %{nil}
+
+%global orig_version_date 2021-09-18
+%global orig_version_time 18-09-59
 %global orig_version %{orig_version_date}T%{lua: print(rpm.expand("%{orig_version_time}"):gsub("-", ":") .. "Z")}
 %global orig_tag RELEASE.%{orig_version_date}T%{orig_version_time}Z
 
@@ -12,7 +15,7 @@ License:    AGPLv3
 URL:        https://github.com/minio/minio/
 Source0:    https://github.com/minio/minio/archive/v%{orig_tag}/%{name}-%{orig_tag}.tar.gz
 
-# $ go mod vendor -v
+# $ GOPROXY=https://proxy.golang.org go mod vendor -v
 # Contains minio-$TAG/vendor/*.
 Source1:    %{name}-%{orig_tag}.go-mod-vendor.tar.xz
 
@@ -92,5 +95,8 @@ exit 0
 
 
 %changelog
+* Tue Sep 21 2021 Ivan Mironov <mironov.ivan@gmail.com> - 2021.09.18.18.09.59-1
+- Update to RELEASE.2021-09-18T18-09-59Z
+
 * Sat Jun 12 2021 Ivan Mironov <mironov.ivan@gmail.com> - 2021.06.09.18.51.39-1
 - Initial packaging

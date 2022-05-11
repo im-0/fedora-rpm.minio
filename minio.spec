@@ -1,8 +1,8 @@
 # TODO: Enable debuginfo (disabled for f35).
 %global debug_package %{nil}
 
-%global orig_version_date 2021-09-18
-%global orig_version_time 18-09-59
+%global orig_version_date 2022-05-08
+%global orig_version_time 23-50-31
 %global orig_version %{orig_version_date}T%{lua: print(rpm.expand("%{orig_version_time}"):gsub("-", ":") .. "Z")}
 %global orig_tag RELEASE.%{orig_version_date}T%{orig_version_time}Z
 
@@ -27,7 +27,7 @@ Patch0:     0001-Do-not-check-for-cross-device-mounts.patch
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x %{arm}
 
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang >= 1.16
+BuildRequires:  golang >= 1.17
 
 
 %description
@@ -95,6 +95,9 @@ exit 0
 
 
 %changelog
+* Wed May 11 2022 Ivan Mironov <mironov.ivan@gmail.com> - 2022.05.08.23.50.31-1
+- Update to RELEASE.2022-05-08T23-50-31Z
+
 * Tue Sep 21 2021 Ivan Mironov <mironov.ivan@gmail.com> - 2021.09.18.18.09.59-1
 - Update to RELEASE.2021-09-18T18-09-59Z
 

@@ -3,6 +3,8 @@ Description=MinIO High Performance Object Storage
 After=network-online.target remote-fs.target
 Wants=network-online.target
 
+StartLimitIntervalSec=0
+
 [Service]
 EnvironmentFile=/etc/sysconfig/minio
 
@@ -14,6 +16,8 @@ LimitNOFILE=1024000
 
 ExecStart=/usr/bin/minio server $SERVICE_OPTS
 
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

@@ -1,8 +1,8 @@
 # TODO: Enable debuginfo (disabled for f35).
 %global debug_package %{nil}
 
-%global orig_version_date 2022-05-08
-%global orig_version_time 23-50-31
+%global orig_version_date 2022-09-17
+%global orig_version_time 00-09-45
 %global orig_version %{orig_version_date}T%{lua: print(rpm.expand("%{orig_version_time}"):gsub("-", ":") .. "Z")}
 %global orig_tag RELEASE.%{orig_version_date}T%{orig_version_time}Z
 
@@ -27,7 +27,7 @@ Patch0:     0001-Do-not-check-for-cross-device-mounts.patch
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x %{arm}
 
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang >= 1.17
+BuildRequires:  golang >= 1.18
 
 
 %description
@@ -38,7 +38,6 @@ machine learning, analytics and application data workloads.
 
 
 %prep
-%autosetup -p1 -b0 -n %{name}-%{orig_tag}
 %autosetup -p1 -b1 -n %{name}-%{orig_tag}
 
 sed -i 's,^\([[:space:]]*Version[[:space:]]*=[[:space:]]*\)".*$,\1"%{orig_version}",' cmd/build-constants.go
@@ -95,6 +94,9 @@ exit 0
 
 
 %changelog
+* Sun Sep 18 2022 Ivan Mironov <mironov.ivan@gmail.com> - 2022.09.17.00.09.45-1
+- Update to RELEASE.2022-09-17T00-09-45Z
+
 * Wed May 11 2022 Ivan Mironov <mironov.ivan@gmail.com> - 2022.05.08.23.50.31-1
 - Update to RELEASE.2022-05-08T23-50-31Z
 

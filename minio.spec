@@ -1,8 +1,8 @@
 # TODO: Enable debuginfo (disabled for f35).
 %global debug_package %{nil}
 
-%global orig_version_date 2022-09-17
-%global orig_version_time 00-09-45
+%global orig_version_date 2023-01-20
+%global orig_version_time 02-05-44
 %global orig_version %{orig_version_date}T%{lua: print(rpm.expand("%{orig_version_time}"):gsub("-", ":") .. "Z")}
 %global orig_tag RELEASE.%{orig_version_date}T%{orig_version_time}Z
 
@@ -13,7 +13,7 @@ Summary:    High Performance Object Storage
 
 License:    AGPLv3
 URL:        https://github.com/minio/minio/
-Source0:    https://github.com/minio/minio/archive/v%{orig_tag}/%{name}-%{orig_tag}.tar.gz
+Source0:    https://github.com/minio/minio/archive/%{orig_tag}/%{name}-%{orig_tag}.tar.gz
 
 # $ GOPROXY=https://proxy.golang.org go mod vendor -v
 # Contains minio-$TAG/vendor/*.
@@ -94,6 +94,9 @@ exit 0
 
 
 %changelog
+* Tue Jan 24 2023 Ivan Mironov <mironov.ivan@gmail.com> - 2023.01.20.02.05.44-1
+- Update to RELEASE.2023-01-20T02-05-44Z
+
 * Sun Sep 18 2022 Ivan Mironov <mironov.ivan@gmail.com> - 2022.09.17.00.09.45-1
 - Update to RELEASE.2022-09-17T00-09-45Z
 
